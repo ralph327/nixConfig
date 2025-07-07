@@ -106,6 +106,7 @@
     vim 
     git
     direnv
+    nix-direnv
     tmux
     byobu
     terminator
@@ -119,6 +120,8 @@
   #programs.zsh.enable = true;
   #environment.shells = with pkgs; [ zsh ];
   #users.defaultUserShell = pkgs.zsh;
+  
+  programs.direnv.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
