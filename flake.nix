@@ -22,9 +22,11 @@
       nixosConfigurations = {
           ram-nixos = lib.nixosSystem {
             modules = [ ./configuration.nix ./hosts/ram-nixos/hardware.nix];
+	    /*
 	    environment.systemPackages = with pkgs; [
 	      firefox
 	    ];
+	   */
 	  };
 	  ramv-nixos = lib.nixosSystem {
 	    modules = [ ./configuration.nix ./hosts/ramv-nixos/hardware.nix];

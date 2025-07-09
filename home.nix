@@ -73,4 +73,9 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.git = {
+    userName = "ralph327";
+    userEmail = "rafael.adan.martinez@gmail.com";
+  };
 }
