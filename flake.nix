@@ -5,6 +5,9 @@
     # Used for System Packages
     nixpkgs.url = "nixpkgs/nixos-25.05";
     
+    # Neovim Config
+    nvf.url = "github:notashelf/nvf";
+ 
     # Used for user packages and dotfiles
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -13,7 +16,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, nvf, home-manager, ... }:
     let 
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -21,7 +24,10 @@
     in {
       nixosConfigurations = {
           ram-nixos = lib.nixosSystem {
-            modules = [ ./configuration.nix ./hosts/ram-nixos/hardware.nix];
+            modules = [ 
+              ./configuration.nix 
+              ./hosts/ram-nixos/hardware.nix
+            ];
 	    /*
 	    environment.systemPackages = with pkgs; [
 	      firefox
@@ -29,7 +35,12 @@
 	   */
 	  };
 	  ramv-nixos = lib.nixosSystem {
-	    modules = [ ./configuration.nix ./hosts/ramv-nixos/hardware.nix];
+	    modules = [ 
+              ./configuration.nix 
+              ./hosts/ramv-nixos/hardware.nix
+              nvf.nixosModules.default
+              ./nvf_conf.nix
+            ];
 	  }; 
       };
       homeConfigurations = {
