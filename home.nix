@@ -75,7 +75,11 @@
   programs.home-manager.enable = true;
 
   programs.git = {
+    enable = true;
     userName = "ralph327";
     userEmail = "rafael.adan.martinez@gmail.com";
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
   };
 }

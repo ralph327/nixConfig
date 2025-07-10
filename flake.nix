@@ -25,18 +25,13 @@
       nixosConfigurations = {
           ram-nixos = lib.nixosSystem {
             modules = [ 
-              ./configuration.nix 
+              ./hosts/ram-nixos/configuration.nix 
               ./hosts/ram-nixos/hardware.nix
             ];
-	    /*
-	    environment.systemPackages = with pkgs; [
-	      firefox
-	    ];
-	   */
 	  };
 	  ramv-nixos = lib.nixosSystem {
 	    modules = [ 
-              ./configuration.nix 
+              ./hosts/ramv-nixos/configuration.nix 
               ./hosts/ramv-nixos/hardware.nix
               nvf.nixosModules.default
               ./nvf_conf.nix
