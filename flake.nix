@@ -16,25 +16,37 @@
     };
   };
 
-  outputs = { self, nixpkgs, nvf, home-manager, ... }:
+  outputs = { self, nixpkgs, nvf, home-manager, ... }@inputs:
     let 
       system = "x86_64-linux";
-      lib = nixpkgs.lib;
+      lib = nixpkgs.lib.extend (
+        self: super: {
+          ram = import ./lib {
+            inherit inputs;
+	    lib = self;
+          };
+        }
+      );
+
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations = {
           ram-nixos = lib.nixosSystem {
+	    specialArgs = {
+              inherit inputs;
+	      inherit lib;
+	    };
             modules = [ 
               ./hosts/ram-nixos/configuration.nix 
-              ./hosts/ram-nixos/hardware.nix
             ];
 	  };
 	  ramv-nixos = lib.nixosSystem {
+	    specialArgs = {
+	      inherit inputs;
+	      inherit lib;
+	    }
 	    modules = [ 
               ./hosts/ramv-nixos/configuration.nix 
-              ./hosts/ramv-nixos/hardware.nix
-              nvf.nixosModules.default
-              ./nvf_conf.nix
             ];
 	  }; 
       };
