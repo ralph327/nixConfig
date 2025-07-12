@@ -44,7 +44,7 @@
 	    specialArgs = {
 	      inherit inputs;
 	      inherit lib;
-	    }
+	    };
 	    modules = [ 
               ./hosts/ramv-nixos/configuration.nix 
             ];
