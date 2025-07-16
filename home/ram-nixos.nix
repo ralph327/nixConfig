@@ -4,6 +4,6 @@ let
 in
 {
   imports = [
-
+    ./bspwm_conf.nix
   ];
 }

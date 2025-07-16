@@ -51,9 +51,13 @@
 	  }; 
       };
       homeConfigurations = {
-        rafael = home-manager.lib.homeManagerConfiguration {
+        "rafael@ramv-nixos" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./home/home.nix ];
+          modules = [ ./home/home.nix ./home/home-rafael.ramv-nixos.nix ];
+        };
+        "rafael@ram-nixos" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home/home.nix ./home/home-rafael.ram-nixos.nix ];
         };
       };
     };
