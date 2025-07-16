@@ -8,22 +8,23 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware.nix
-      ../../modules/default.nix
+      ../../modules
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.wireless.userControlled.enable = true;
+  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #networking.wireless.userControlled.enable = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  services.connman.enable = true;
+  #services.connman.enable = true;
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Denver";
@@ -47,9 +48,17 @@
   services.xserver.enable = true;
 
   # Enable the Enlightenment Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
+  #services.xserver.displayManager.lightdm.enable = true;
   services.xserver.desktopManager.enlightenment.enable = true;
 
+  #Enable Plasma
+  services.xserver.desktopManager.plasma6.enable = true;
+  services.xserver.displayManager.sddm.enable = true; # SDDM is recommended for Plasma.
+  services.displayManager.sddm.wayland.enable = true;
+
+  #Enable BSPWM
+  services.xserver.windowManager.bspwm.enable = true;
+  
   # Enable acpid
   services.acpid.enable = true;
 
@@ -114,6 +123,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     albert
+    sxhkd
+    networkmanagerapplet
     fh
     vim 
     git
@@ -122,11 +133,17 @@
     tmux
     byobu
     terminator
+    enlightenment.terminology
     wget
     zsh
     google-chrome
     caffeine-ng
     protonvpn-gui
+    protonvpn-cli
+    rofi
+    zathura
+    polybar
+    wezterm
   ];
 
   programs.direnv.enable = true;
@@ -149,6 +166,7 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall.checkReversePath = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

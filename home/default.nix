@@ -5,7 +5,5 @@ in
 {
   imports = [
     ./bspwm_conf.nix
-    ./nvf_conf.nix
-    inputs.nvf.nixosModules.default
   ];
 }
