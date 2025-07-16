@@ -8,4 +8,10 @@ in
     ./nvf_conf.nix
     inputs.nvf.nixosModules.default
   ];
+  fonts.packages = with pkgs; [
+    font-awesome
+    powerline-fonts
+    powerline-symbols
+    nerd-fonts.symbols-only
+  ];
 }
