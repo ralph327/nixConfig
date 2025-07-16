@@ -3,7 +3,9 @@ let
   inherit (lib.ram) enabled;
 in
 {
-  services.sxhkd = lib.mkIf config.services.sxhkd.enable {
+  #services.sxhkd = lib.mkIf config.services.sxhkd.enable {
+  services.sxhkd = {
+    enable = true;
     keybindings = {
       "super + alt + {q,r}" = "bspc {quit, wm -r}";
       "ctrl + alt + t" = "terminology";
@@ -31,6 +33,19 @@ in
         WantedBy = [ "graphical-session.target" ];
       };
     };
+    "polybar" = {
+      Unit = {
+        Description = "Polybar";
+        After = [ "graphical-session.target" ];
+      };
+      Service = {
+        ExecStart = "${pkgs.polybar}/bin/polybar";
+      };
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+    };
   };
   xdg.configFile."albert/config".source = ./albert.conf;
+  xdg.configFile."polybar/config.ini".source = ./polybar.conf;
 }
