@@ -1,5 +1,12 @@
+#                                  _
+#  _ __ __ _ _ __ ___        _ __ (_)_  _____  ___
+# | '__/ _` | '_ ` _ \ _____| '_ \| \ \/ / _ \/ __|
+# | | | (_| | | | | | |_____| | | | |>  < (_) \__ \
+# |_|  \__,_|_| |_| |_|     |_| |_|_/_/\_\___/|___/
+# 
+
 { lib, config, pkgs, ... }:
-let
+let 
   inherit (lib.ram) enabled;
 in
 {
@@ -58,8 +65,9 @@ in
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
+
   imports =
     [
-      ./ramv_polybar_conf.nix
+       ./ram-nixos.nix
     ];
 }

@@ -1,3 +1,10 @@
+#                                  _
+#  _ __ __ _ _ __ ___        _ __ (_)_  _____  ___
+# | '__/ _` | '_ ` _ \ _____| '_ \| \ \/ / _ \/ __|
+# | | | (_| | | | | | |_____| | | | |>  < (_) \__ \
+# |_|  \__,_|_| |_| |_|     |_| |_|_/_/\_\___/|___/
+# 
+
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
@@ -112,6 +119,11 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # Allow insecure broadcom
+  nixpkgs.config.permittedInsecurePackages = [
+    "broadcom-sta-6.30.223.271-57-6.12.38"
+  ];
 
   # Install Flatpak
   services.flatpak.enable = true;

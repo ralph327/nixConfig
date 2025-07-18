@@ -1,3 +1,4 @@
+
 {
   description = "ram-nixos";
 
@@ -35,6 +36,7 @@
 	    specialArgs = {
               inherit inputs;
 	      inherit lib;
+              inherit system;
 	    };
             modules = [ 
               ./hosts/ram-nixos/configuration.nix 
@@ -44,6 +46,7 @@
 	    specialArgs = {
 	      inherit inputs;
 	      inherit lib;
+              inherit system;
 	    };
 	    modules = [ 
               ./hosts/ramv-nixos/configuration.nix 
@@ -51,13 +54,13 @@
 	  }; 
       };
       homeConfigurations = {
-        "rafael@ramv-nixos" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ ./home/home.nix ./home/home-rafael.ramv-nixos.nix ];
-        };
         "rafael@ram-nixos" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./home/home.nix ./home/home-rafael.ram-nixos.nix ];
+          modules = [ ./home ./home/hosts/ram-nixos ];
+        };
+        "rafael@ramv-nixos" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home ./home/hosts/ramv-nixos ];
         };
       };
     };

@@ -1,6 +1,13 @@
+#                                      _
+#  _ __ __ _ _ __ _____   __     _ __ (_)_  _____  ___
+# | '__/ _` | '_ ` _ \ \ / /____| '_ \| \ \/ / _ \/ __|
+# | | | (_| | | | | | \ V /_____| | | | |>  < (_) \__ \
+# |_|  \__,_|_| |_| |_|\_/      |_| |_|_/_/\_\___/|___/
+# 
+
 { lib, config, pkgs, ... }:
-let 
-  inerhit (lib.ram) enabled;
+let
+  inherit (lib.ram) enabled;
 in
 {
   # The home.packages option allows you to install Nix packages into your
@@ -58,9 +65,8 @@ in
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-
   imports =
     [
-       ./ram-nixos.nix
+      ./polybar.nix
     ];
 }

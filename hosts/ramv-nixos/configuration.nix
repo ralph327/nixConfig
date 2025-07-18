@@ -1,3 +1,10 @@
+#                                      _
+#  _ __ __ _ _ __ _____   __     _ __ (_)_  _____  ___
+# | '__/ _` | '_ ` _ \ \ / /____| '_ \| \ \/ / _ \/ __|
+# | | | (_| | | | | | \ V /_____| | | | |>  < (_) \__ \
+# |_|  \__,_|_| |_| |_|\_/      |_| |_|_/_/\_\___/|___/
+# 
+
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
