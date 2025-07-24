@@ -3,20 +3,21 @@
 # | '__/ _` | '_ ` _ \ _____| '_ \| \ \/ / _ \/ __|
 # | | | (_| | | | | | |_____| | | | |>  < (_) \__ \
 # |_|  \__,_|_| |_| |_|     |_| |_|_/_/\_\___/|___/
-# 
-
+#
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware.nix
-      ../../modules
-    ];
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware.nix
+    ../../modules
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -65,7 +66,14 @@
 
   #Enable BSPWM
   services.xserver.windowManager.bspwm.enable = true;
-  
+
+  #Enable Hyprland
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
+
   # Enable acpid
   services.acpid.enable = true;
 
@@ -74,13 +82,12 @@
     layout = "us";
     variant = "";
   };
-  
+
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;  
+  hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
 
   services.connman.wifi.backend = "wpa_supplicant";
-
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -108,9 +115,9 @@
   users.users.rafael = {
     isNormalUser = true;
     description = "Rafael Adan Martinez";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -122,24 +129,25 @@
 
   # Allow insecure broadcom
   nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-57-6.12.38"
+    "broadcom-sta-6.30.223.271-57-6.12.39"
   ];
 
   # Install Flatpak
   services.flatpak.enable = true;
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
   xdg.portal.config.common.default = "gtk";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    signal-desktop
     kitty
     albert
     sxhkd
     networkmanagerapplet
     fh
-    vim 
+    vim
     git
     direnv
     nix-direnv
@@ -148,6 +156,7 @@
     terminator
     enlightenment.terminology
     wget
+    gparted
     zsh
     google-chrome
     caffeine-ng
@@ -157,6 +166,7 @@
     zathura
     polybar
     wezterm
+    zoom-us
   ];
 
   programs.direnv.enable = true;
@@ -188,14 +198,14 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-  
+
   # Garbage Collection
   nix.gc = {
-     automatic = true;
-     dates = "weekly";
-     options = "--delete-older-than 30d";
-   };
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.download-buffer-size = 500000000; # 500 MB
 }

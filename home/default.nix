@@ -41,5 +41,4 @@
 
     ];
 
-    xdg.configFile."nvim/init.vim".source = ./nvim.conf;
 }
