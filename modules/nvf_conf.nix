@@ -68,15 +68,60 @@
         };
 
         treesitter.context.enable = true;
+        autocomplete.nvim-cmp.enable = true;
 
         lazy.plugins = {
           "kanagawa.nvim" = {
             lazy = false;
             priority = 1000;
             package = pkgs.vimPlugins.kanagawa-nvim;
+            setupModule = "kanagawa";
+            setupOpts = {
+              terminalColors = true;
+              colors = {
+                theme = {
+                  dragon = {
+                    ui = {
+                      fg = "#87A987";
+                      fg_dim = "#8a9a7b";
+                      special = "#98BB6C";
+                    };
+                    syn = {
+                      string = "#D27E99";
+                      variable = "#87A987";
+                      number = "#FF5D62";
+                      constant = "#7FB4CA";
+                      identifier = "#98BB6C";
+                      parameter = "#6A9589";
+                      fun = "#98BB6C";
+                      statement = "#957FB8";
+                      keyword = "#FFA066";
+                      operator = "#FF5D62";
+                      type = "#E6C384";
+                      punct = "#727169";
+                      comment = "#938056";
+                    };
+                  };
+                };
+              };
+              theme = "dragon";
+              background = {
+                dark = "dragon";
+                light = "lotus";
+              };
+            };
           };
         };
-        luaConfigRC."kanagawa.vim" = "vim.cmd('colorscheme kanagawa-wave')";
+        luaConfigRC."kanagawa.vim" = "vim.cmd('colorscheme kanagawa')";
+
+        keymaps = [
+          {
+            key = "<Home>";
+            mode = "n";
+            silent = true;
+            action = "^";
+          }
+        ];
       };
     };
   };
