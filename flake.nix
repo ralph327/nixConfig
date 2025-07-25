@@ -1,5 +1,5 @@
 {
-  description = "ram-nixos";
+  description = "Ralph's nixConfig for ram-nixos and ramv-nixos";
 
   inputs = {
     # Used for System Packages
