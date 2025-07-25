@@ -3,23 +3,23 @@
 # | '__/ _` | '_ ` _ \ \ / /____| '_ \| \ \/ / _ \/ __|
 # | | | (_| | | | | | \ V /_____| | | | |>  < (_) \__ \
 # |_|  \__,_|_| |_| |_|\_/      |_| |_|_/_/\_\___/|___/
-# 
-
+#
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware.nix 
-      ../../modules
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware.nix
+    ../../modules
+  ];
 
   # Bootloader.
-  #boot.initrd.availableKernelModules = [ "i915" ]; 
+  #boot.initrd.availableKernelModules = [ "i915" ];
   #boot.kernelParams = [ "video=HDMI-A-2" ]; #Boot on Main Monitor
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -92,10 +92,10 @@
   users.users.rafael = {
     isNormalUser = true;
     description = "Rafael Adan Martinez";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -111,11 +111,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    signal-desktop
     polybar
     kitty
     albert
     fh
-    vim 
+    vim
     git
     direnv
     nix-direnv
@@ -132,7 +133,7 @@
   #programs.zsh.enable = true;
   #environment.shells = with pkgs; [ zsh ];
   #users.defaultUserShell = pkgs.zsh;
-  
+
   programs.direnv.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -165,12 +166,11 @@
 
   # Garbage Collection
   nix.gc = {
-     automatic = true;
-     dates = "weekly";
-     options = "--delete-older-than 30d";
-   };
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.download-buffer-size = 500000000; # 500 MB
-
 }
