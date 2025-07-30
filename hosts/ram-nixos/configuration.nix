@@ -110,14 +110,9 @@
     sxhkd
     networkmanagerapplet
     fh
-    tmux
-    byobu
-    terminator
-    enlightenment.terminology
     protonvpn-cli
     rofi
     zathura
-    wezterm
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

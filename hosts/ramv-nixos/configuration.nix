@@ -82,10 +82,6 @@
   environment.systemPackages = with pkgs; [
     albert
     fh
-    albert
-    tmux
-    byobu
-    terminator
   ];
 
   #programs.zsh.enable = true;
