@@ -80,20 +80,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-<<<<<<< HEAD
-    signal-desktop
-    polybar
-    kitty
     albert
     fh
-    vim
-    git
-    direnv
-    nix-direnv
-=======
     albert
-    fh
->>>>>>> 7aa1767 (Refactor: moving more config into modules/default.nix)
     tmux
     byobu
     terminator
@@ -102,11 +91,6 @@
   #programs.zsh.enable = true;
   #environment.shells = with pkgs; [ zsh ];
   #users.defaultUserShell = pkgs.zsh;
-<<<<<<< HEAD
-
-  programs.direnv.enable = true;
-=======
->>>>>>> 7aa1767 (Refactor: moving more config into modules/default.nix)
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -133,10 +117,4 @@
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
-<<<<<<< HEAD
-
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  nix.settings.download-buffer-size = 500000000; # 500 MB
-=======
->>>>>>> 7aa1767 (Refactor: moving more config into modules/default.nix)
 }
