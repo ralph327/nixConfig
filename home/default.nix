@@ -4,10 +4,11 @@
 # _ / / | | | | (_) | | | | | |  __/
 #(_)_/  |_| |_|\___/|_| |_| |_|\___|
 #
-
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "rafael";
@@ -31,14 +32,11 @@
     enable = true;
     userName = "ralph327";
     userEmail = "rafael.adan.martinez@gmail.com";
-      extraConfig = {
-        init.defaultBranch = "main";
-      };
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 
-  imports =
-    [
-
-    ];
-
+  imports = [
+  ];
 }

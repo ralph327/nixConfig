@@ -56,6 +56,12 @@ in {
 
   # FONTS
   fonts.packages = with pkgs; [
+    hermit
+    inconsolata
+    nerd-fonts.bigblue-terminal
+    nerd-fonts.intone-mono
+    nerd-fonts.blex-mono
+    cascadia-code
     font-awesome
     powerline-fonts
     powerline-symbols
@@ -66,6 +72,7 @@ in {
   environment.systemPackages = with pkgs; [
     signal-desktop
     kitty
+    kitty-themes
     git
     direnv
     nix-direnv
@@ -82,6 +89,10 @@ in {
   # DEV Environments
   programs.direnv.enable = true;
 
+  # KITTY
+  environment.etc."xdg/kitty".source = ./kitty;
+
+  # FLAKES
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
     download-buffer-size = 500000000; # 500 MB
