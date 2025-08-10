@@ -70,6 +70,7 @@ in {
 
   # Default Packages
   environment.systemPackages = with pkgs; [
+    pciutils
     signal-desktop
     kitty
     kitty-themes
