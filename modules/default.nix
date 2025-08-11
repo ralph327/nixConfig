@@ -82,6 +82,7 @@ in {
     caffeine-ng
     protonvpn-gui
     zoom-us
+    audacity
     google-chrome
     polybar
     zsh
