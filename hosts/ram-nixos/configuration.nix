@@ -85,7 +85,7 @@
   users.users.rafael = {
     isNormalUser = true;
     description = "Rafael Adan Martinez";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "dialout"];
     packages = with pkgs; [
       #  thunderbird
     ];
