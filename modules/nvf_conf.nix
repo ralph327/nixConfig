@@ -30,7 +30,6 @@
 
         lsp = {
           enable = true;
-
           formatOnSave = true;
           #trouble = true;
         };

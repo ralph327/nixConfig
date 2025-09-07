@@ -1,8 +1,11 @@
-{lib, pkgs, config, ...} :
-let
-  inherit (lib.ram) enabled;
-in
 {
+  lib,
+  pkgs,
+  config,
+  ...
+}: let
+  inherit (lib.ram) enabled;
+in {
   #services.sxhkd = lib.mkIf config.services.sxhkd.enable {
   services.sxhkd = {
     enable = true;
@@ -21,31 +24,18 @@ in
     };
   };
   systemd.user.services = {
-    "albert" = {
-      Unit = {
-        Description = "Albert Launcher";
-        After = [ "graphical-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.albert}/bin/albert";
-      };
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-    };
     "polybar" = {
       Unit = {
         Description = "Polybar";
-        After = [ "graphical-session.target" ];
+        After = ["graphical-session.target"];
       };
       Service = {
         ExecStart = "${pkgs.polybar}/bin/polybar";
       };
       Install = {
-        WantedBy = [ "graphical-session.target" ];
+        WantedBy = ["graphical-session.target"];
       };
     };
   };
-  xdg.configFile."albert/config".source = ./albert.conf;
   xdg.configFile."polybar/config.ini".source = ./polybar.conf;
 }

@@ -96,7 +96,7 @@
 
   # Allow insecure broadcom
   nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-57-6.12.41"
+    "broadcom-sta-6.30.223.271-57-6.12.44"
   ];
 
   xdg.portal.enable = true;
@@ -106,12 +106,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    albert
     sxhkd
     networkmanagerapplet
     fh
     protonvpn-cli
-    rofi
+    rofi-wayland-unwrapped
     zathura
   ];
 
