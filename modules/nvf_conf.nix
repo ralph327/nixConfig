@@ -59,6 +59,9 @@
             enable = true;
             format.type = "biome";
           };
+          rust = {
+            enable = true;
+          };
         };
 
         treesitter.context.enable = true;
