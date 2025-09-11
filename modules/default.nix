@@ -70,7 +70,7 @@ in {
 
   # Default Packages
   environment.systemPackages = with pkgs; [
-    prettierd
+    biome
     pciutils
     signal-desktop
     kitty

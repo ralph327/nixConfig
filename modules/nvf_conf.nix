@@ -43,7 +43,7 @@
           bash.enable = true;
           css = {
             enable = true;
-            format.type = "prettierd";
+            format.type = "biome";
           };
           html.enable = true;
           sql.enable = true;
@@ -52,9 +52,13 @@
           python.enable = true;
           ts = {
             enable = true;
-            format.type = "prettierd";
+            format.type = "biome";
           };
           tailwind.enable = true;
+          svelte = {
+            enable = true;
+            format.type = "biome";
+          };
         };
 
         treesitter.context.enable = true;
