@@ -96,7 +96,7 @@
 
   # Allow insecure broadcom
   nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-57-6.12.45"
+    "broadcom-sta-6.30.223.271-57-6.12.46"
   ];
 
   xdg.portal.enable = true;
