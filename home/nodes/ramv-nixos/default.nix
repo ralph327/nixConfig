@@ -71,6 +71,5 @@ in {
     ./hyprland.nix
     ./hyprpanel.nix
     ./polybar.nix
-    ./albert.nix
   ];
 }

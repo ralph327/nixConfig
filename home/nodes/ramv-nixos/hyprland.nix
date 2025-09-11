@@ -36,7 +36,7 @@
 
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
-      "$menu" = "albert toggle";
+      "$menu" = "rofi -show drun";
 
       #################
       ### AUTOSTART ###
@@ -46,7 +46,6 @@
       # Or execute your favorite apps at launch like this:
 
       "exec-once" = [
-        "albert"
         "hyprpanel"
       ];
 
