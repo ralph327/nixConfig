@@ -34,6 +34,29 @@
           #trouble = true;
         };
 
+        languages = {
+          enableFormat = true;
+          enableTreesitter = true;
+          enableExtraDiagnostics = true;
+          nix.enable = true;
+          markdown.enable = true;
+          bash.enable = true;
+          css = {
+            enable = true;
+            format.type = "prettierd";
+          };
+          html.enable = true;
+          sql.enable = true;
+          go.enable = true;
+          lua.enable = true;
+          python.enable = true;
+          ts = {
+            enable = true;
+            format.type = "prettierd";
+          };
+          tailwind.enable = true;
+        };
+
         treesitter.context.enable = true;
         autocomplete.nvim-cmp.enable = true;
 
