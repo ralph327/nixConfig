@@ -3,13 +3,15 @@
 # | '__/ _` | '_ ` _ \ \ / /____| '_ \| \ \/ / _ \/ __|
 # | | | (_| | | | | | \ V /_____| | | | |>  < (_) \__ \
 # |_|  \__,_|_| |_| |_|\_/      |_| |_|_/_/\_\___/|___/
-# 
-
-{ lib, config, pkgs, ... }:
-let
-  inherit (lib.ram) enabled;
-in
+#
 {
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
+  inherit (lib.ram) enabled;
+in {
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -65,8 +67,10 @@ in
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
-  imports =
-    [
-      ./polybar.nix
-    ];
+  imports = [
+    ./hyprland.nix
+    ./hyprpanel.nix
+    ./polybar.nix
+    ./albert.nix
+  ];
 }

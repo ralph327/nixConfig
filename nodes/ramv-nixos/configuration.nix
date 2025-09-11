@@ -1,8 +1,8 @@
-#                                  _
-#  _ __ __ _ _ __ ___        _ __ (_)_  _____  ___
-# | '__/ _` | '_ ` _ \ _____| '_ \| \ \/ / _ \/ __|
-# | | | (_| | | | | | |_____| | | | |>  < (_) \__ \
-# |_|  \__,_|_| |_| |_|     |_| |_|_/_/\_\___/|___/
+#                                      _
+#  _ __ __ _ _ __ _____   __     _ __ (_)_  _____  ___
+# | '__/ _` | '_ ` _ \ \ / /____| '_ \| \ \/ / _ \/ __|
+# | | | (_| | | | | | \ V /_____| | | | |>  < (_) \__ \
+# |_|  \__,_|_| |_| |_|\_/      |_| |_|_/_/\_\___/|___/
 #
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
@@ -20,11 +20,13 @@
   ];
 
   # Bootloader.
+  #boot.initrd.availableKernelModules = [ "i915" ];
+  #boot.kernelParams = [ "video=HDMI-A-2" ]; #Boot on Main Monitor
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  #networking.wireless.userControlled.enable = true;
+  # networking.hostName = "ram-nixos"; # Define your hostname.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -49,29 +51,20 @@
   };
 
   # Enable the X11 windowing system.
+  # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  # Enable the Enlightenment Desktop Environment.
-  #services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.enlightenment.enable = true;
+  # Enable the KDE Plasma Desktop Environment.
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
-  #Enable Plasma
-  services.xserver.desktopManager.plasma6.enable = true;
-  services.xserver.displayManager.sddm.enable = true; # SDDM is recommended for Plasma.
-  services.displayManager.sddm.wayland.enable = true;
-
-  #Enable BSPWM
-  services.xserver.windowManager.bspwm.enable = true;
-
-  #Enable Hyprland
+  # Enable Hyprland
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    withUWSM = true;
   };
-
-  # Enable acpid
-  services.acpid.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -79,40 +72,32 @@
     variant = "";
   };
 
-  services.connman.wifi.backend = "wpa_supplicant";
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.rafael = {
     isNormalUser = true;
     description = "Rafael Adan Martinez";
     extraGroups = ["networkmanager" "wheel" "dialout"];
     packages = with pkgs; [
+      kdePackages.kate
       #  thunderbird
     ];
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
-
-  # Allow insecure broadcom
-  nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-57-6.12.45"
-  ];
-
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
-  xdg.portal.config.common.default = "gtk";
+  #programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    sxhkd
-    networkmanagerapplet
-    fh
-    protonvpn-cli
     rofi-wayland-unwrapped
-    zathura
+    fh
+    networkmanagerapplet
+    hyprpanel
   ];
+
+  #programs.zsh.enable = true;
+  #environment.shells = with pkgs; [ zsh ];
+  #users.defaultUserShell = pkgs.zsh;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

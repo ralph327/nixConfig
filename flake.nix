@@ -44,7 +44,7 @@
           inherit system;
         };
         modules = [
-          ./hosts/ram-nixos/configuration.nix
+          ./nodes/ram-nixos/configuration.nix
         ];
       };
       ramv-nixos = lib.nixosSystem {
@@ -54,18 +54,18 @@
           inherit system;
         };
         modules = [
-          ./hosts/ramv-nixos/configuration.nix
+          ./nodes/ramv-nixos/configuration.nix
         ];
       };
     };
     homeConfigurations = {
       "rafael@ram-nixos" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [./home ./home/hosts/ram-nixos];
+        modules = [./home ./home/nodes/ram-nixos];
       };
       "rafael@ramv-nixos" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [./home ./home/hosts/ramv-nixos];
+        modules = [./home ./home/nodes/ramv-nixos];
       };
     };
   };

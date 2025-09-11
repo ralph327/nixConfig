@@ -391,11 +391,19 @@
     },
     "mnw": {
       "locked": {
+<<<<<<< Updated upstream
         "lastModified": 1756659871,
         "narHash": "sha256-v6Rh4aQ6RKjM2N02kK9Usn0Ix7+OY66vNpeklc1MnGE=",
         "owner": "Gerg-L",
         "repo": "mnw",
         "rev": "ed6cc3e48557ba18266e598a5ebb6602499ada16",
+=======
+        "lastModified": 1756580127,
+        "narHash": "sha256-XK+ZQWjnd96Uko73jY1dc23ksnuWnF/Myc4rT/LQOmc=",
+        "owner": "Gerg-L",
+        "repo": "mnw",
+        "rev": "ecdb5ba1b08ac198d9e9bfbf9de3b234fb1eb252",
+>>>>>>> Stashed changes
         "type": "github"
       },
       "original": {
@@ -422,11 +430,19 @@
     },
     "nixpkgs_2": {
       "locked": {
+<<<<<<< Updated upstream
         "lastModified": 1757408970,
         "narHash": "sha256-aSgK4BLNFFGvDTNKPeB28lVXYqVn8RdyXDNAvgGq+k0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "d179d77c139e0a3f5c416477f7747e9d6b7ec315",
+=======
+        "lastModified": 1756617294,
+        "narHash": "sha256-aGnd4AHIYCWQKChAkHPpX+YYCt7pA6y2LFFA/s8q0wQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b4c2c57c31e68544982226d07e4719a2d86302a8",
+>>>>>>> Stashed changes
         "type": "github"
       },
       "original": {
@@ -437,11 +453,19 @@
     },
     "nixpkgs_3": {
       "locked": {
+<<<<<<< Updated upstream
         "lastModified": 1756696532,
         "narHash": "sha256-6FWagzm0b7I/IGigOv9pr6LL7NQ86mextfE8g8Q6HBg=",
         "owner": "nixos",
         "repo": "nixpkgs",
         "rev": "58dcbf1ec551914c3756c267b8b9c8c86baa1b2f",
+=======
+        "lastModified": 1756536218,
+        "narHash": "sha256-ynQxPVN2FIPheUgTFhv01gYLbaiSOS7NgWJPm9LF9D0=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a918bb3594dd243c2f8534b3be01b3cb4ed35fd1",
+>>>>>>> Stashed changes
         "type": "github"
       },
       "original": {
@@ -460,11 +484,19 @@
         "systems": "systems_2"
       },
       "locked": {
+<<<<<<< Updated upstream
         "lastModified": 1757397598,
         "narHash": "sha256-v/FANUOWyeWlWCD61HDLSNO9nHnQALAtvLf2VtE1+WU=",
         "owner": "notashelf",
         "repo": "nvf",
         "rev": "c7944a48a3c61cb3ca08ac2dc8b8de124d15dcb8",
+=======
+        "lastModified": 1756668885,
+        "narHash": "sha256-K2B+szngrw1tfzkrAs49HGkK5hlUGIKV0+2Z9ndnAuA=",
+        "owner": "notashelf",
+        "repo": "nvf",
+        "rev": "bf485ab9b6db5610ee93b90c94f1fd2afb4eb582",
+>>>>>>> Stashed changes
         "type": "github"
       },
       "original": {
