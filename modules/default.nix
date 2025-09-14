@@ -70,6 +70,8 @@ in {
 
   # Default Packages
   environment.systemPackages = with pkgs; [
+    gnupg
+    pinentry-curses
     biome
     pciutils
     signal-desktop
@@ -91,6 +93,12 @@ in {
 
   # DEV Environments
   programs.direnv.enable = true;
+
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+  services.pcscd.enable = true;
 
   # KITTY
   environment.etc."xdg/kitty".source = ./kitty;
