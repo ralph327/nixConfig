@@ -96,7 +96,7 @@
 
   # Allow insecure broadcom
   nixpkgs.config.permittedInsecurePackages = [
-    "broadcom-sta-6.30.223.271-57-6.12.46"
+    "broadcom-sta-6.30.223.271-57-6.12.48"
   ];
 
   xdg.portal.enable = true;
@@ -112,6 +112,7 @@
     protonvpn-cli
     rofi-wayland-unwrapped
     zathura
+    libreoffice-qt6-fresh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
